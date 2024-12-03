@@ -81,7 +81,7 @@ const DataPungutan = () => {
               className="border p-2 rounded mt-2"
             />
           </div>
-          <div className="w-[160px] h-[50px] bg-blue-950 rounded-lg flex items-center justify-center mt-5">
+          <div className="w-[160px] h-[50px] bg-blue-950 rounded-lg flex items-center justify-center mt-5 cursor-pointer">
             <ChangeCircleIcon sx={{ color: 'white' }}/>
             </div>
         </div>
@@ -163,8 +163,8 @@ const DataPungutan = () => {
           <div className="w-full flex flex-col">
             <label className="text-sm font-semibold">Asuransi bayar di</label>
             <select
-              name="incoterms"
-              value={formData.incoterms}
+              name="bayardi"
+              value={formData.asuransiBayarDi}
               onChange={handleChange}
               className="border p-2 rounded mt-2"
             >
@@ -175,18 +175,18 @@ const DataPungutan = () => {
             <label className="text-sm font-semibold">Asuransi</label>
             <input
                 type="text"
-                name="nilai"
-                value={formData.nilai}
+                name="asuransi"
+                value={formData.asuransi}
                 onChange={handleChange}
-                className={`border p-2 rounded mt-2 ${formData.nilai ? 'bg-gray-200' : ''}`}
+                className={`border p-2 rounded mt-2 ${formData.asuransi ? 'bg-gray-200' : ''}`}
             />
           </div>
           <div className="w-full flex flex-col">
             <label className="text-sm font-semibold">Freight</label>
             <input
               type="text"
-              name="kurs"
-              value={formData.kurs}
+              name="freight"
+              value={formData.freight}
               onChange={handleChange}
               className="border p-2 rounded mt-2"
             />
@@ -198,10 +198,10 @@ const DataPungutan = () => {
                 <label className="text-sm font-semibold">CIF</label>
                 <input
                 type="text"
-                name="nilai"
-                value={formData.nilai}
+                name="cif"
+                value={formData.cif}
                 onChange={handleChange}
-                className={`border p-2 rounded mt-2 ${formData.nilai ? 'bg-gray-200' : ''}`}
+                className={`border p-2 rounded mt-2 ${formData.cif ? 'bg-gray-200' : ''}`}
                 />
             </div>
 
@@ -209,10 +209,10 @@ const DataPungutan = () => {
                 <label className="text-sm font-semibold">CIF Rp</label>
                 <input
                 type="text"
-                name="biayaTambahan"
-                value={formData.biayaTambahan}
+                name="cifrp"
+                value={formData.cifRp}
                 onChange={handleChange}
-                className={`border p-2 rounded mt-2 ${formData.biayaTambahan ? 'bg-gray-200' : ''}`}
+                className={`border p-2 rounded mt-2 ${formData.cifRp ? 'bg-gray-200' : ''}`}
                 />
             </div>
 
@@ -220,10 +220,10 @@ const DataPungutan = () => {
                 <label className="text-sm font-semibold">Bruto</label>
                 <input
                 type="text"
-                name="biayaPengurangan"
-                value={formData.biayaPengurangan}
+                name="bruto"
+                value={formData.bruto}
                 onChange={handleChange}
-                className={`border p-2 rounded mt-2 ${formData.biayaPengurangan ? 'bg-gray-200' : ''}`}
+                className={`border p-2 rounded mt-2 ${formData.bruto ? 'bg-gray-200' : ''}`}
                 />
             </div>
 
@@ -231,17 +231,17 @@ const DataPungutan = () => {
                 <label className="text-sm font-semibold">Netto</label>
                 <input
                 type="text"
-                name="voluntaryDeclaration"
-                value={formData.voluntaryDeclaration}
+                name="netto"
+                value={formData.netto}
                 onChange={handleChange}
-                className={`border p-2 rounded mt-2 ${formData.voluntaryDeclaration ? 'bg-gray-200' : ''}`}
+                className={`border p-2 rounded mt-2 ${formData.netto ? 'bg-gray-200' : ''}`}
                 />
             </div>
             <div className="flex w-60 flex-col">
                 <label className="text-sm font-semibold">Flag Kontainer</label>
                 <select
-                    name="incoterms"
-                    value={formData.incoterms}
+                    name="flag"
+                    value={formData.flagKontainer}
                     onChange={handleChange}
                     className="border p-2 rounded mt-2"
                     >
