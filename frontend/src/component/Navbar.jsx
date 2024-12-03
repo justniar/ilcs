@@ -16,10 +16,9 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="flex items-center justify-between bg-blue-800 px-6 py-4 text-white shadow-md">
+    <nav className="flex items-center justify-between bg-blue-900 px-6 py-4 text-white shadow-md">
       <div className="flex items-center space-x-2">
-        <img src="https://via.placeholder.com/40" alt="Logo" className="h-10 w-10" />
-        <span className="text-xl font-bold">MyApp</span>
+        <span className="text-xl font-bold">INSW</span>
       </div>
 
       <div className="flex items-center space-x-6">
