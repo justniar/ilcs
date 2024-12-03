@@ -1,84 +1,259 @@
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import ChangeCircleIcon from '@mui/icons-material/ChangeCircle';
 
 const DataPungutan = () => {
-  const [dataPungutan, setDataPungutan] = useState(null);
+  const [formData, setFormData] = useState({
+    incoterms: '',
+    valuta: '',
+    kurs: '',
+    nilai: '',
+    biayaTambahan: '',
+    biayaPengurangan: '',
+    asuransi: '',
+    asuransiBayarDi: '',
+    freight: '',
+    cif: '',
+    cifRp: '',
+    bruto: '',
+    netto: '',
+    nilaiFob: '',
+    voluntaryDeclaration: '',
+    flagKontainer: '',
+  });
 
-  useEffect(()=>{
-    const fetchData = async () => {
-        try{
-            const response = await axios.get("http://10.8.3.199:1880/test/v2/dataPungutan?id_aju=04eb6a72-bb63-5aed-5e92-f58a3bfd5da2");
-            
-            if(response.data.status){
-                setDataPungutan(response.data.data)
-            } else {
-                console.error("failed to fetch data: ", response.data.message)
-            }
-        } catch (err) {
-            console.error("error fetching data: ", err);
-        }
-    };
-    fetchData();
-}, [])
+  useEffect(() => {
+    axios.get('http://10.8.3.199:1880/test/v2/dataPungutan?id_aju=04eb6a72-bb63-5aed-5e92-f58a3bfd5da2')
+      .then(response => {
+        setFormData(response.data);
+      })
+      .catch(error => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
 
-if (!dataPungutan){
-    return <p>Loading data ...</p>
-}
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevData => ({
+      ...prevData,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+  };
 
   return (
-    <div className="form-container">
-      <h2>Data Pemberitahuan</h2>
+    <div className="p-6 mx-auto">
+      <form onSubmit={handleSubmit}>
+        <div className="w-full flex gap-6 justify-between">
+          <div className="w-full flex flex-col">
+            <label className="text-sm font-semibold">Incoterms</label>
+            <select
+              name="incoterms"
+              value={formData.incoterms}
+              onChange={handleChange}
+              className="border p-2 rounded mt-2"
+            >
+              <option>Free on Board</option>
+            </select>
+          </div>
+          <div className="w-full flex flex-col">
+            <label className="text-sm font-semibold">Valuta</label>
+            <select
+              name="valuta"
+              value={formData.valuta}
+              onChange={handleChange}
+              className="border p-2 rounded mt-2"
+            >
+              <option>Euro</option>
+            </select>
+          </div>
+          <div className="w-full flex flex-col">
+            <label className="text-sm font-semibold">Kurs</label>
+            <input
+              type="text"
+              name="kurs"
+              value={formData.kurs}
+              onChange={handleChange}
+              className="border p-2 rounded mt-2"
+            />
+          </div>
+          <div className="w-[160px] h-[50px] bg-blue-950 rounded-lg flex items-center justify-center mt-5">
+            <ChangeCircleIcon sx={{ color: 'white' }}/>
+            </div>
+        </div>
 
-      <div className="tabs">
-        <button className="tab-button active">Data Utama</button>
-        <button className="tab-button">Data Entitas</button>
-        <button className="tab-button">Data Pungutan</button>
-      </div>
+        <div className="w-full flex gap-4 justify-between py-6">
+            <div className="flex flex-col">
+                <label className="text-sm font-semibold">Nilai</label>
+                <input
+                type="text"
+                name="nilai"
+                value={formData.nilai}
+                onChange={handleChange}
+                className={`border p-2 rounded mt-2 ${formData.nilai ? 'bg-gray-200' : ''}`}
+                />
+            </div>
 
-      <form className="data-form">
-        <label htmlFor="jenisPemberitahuan">Jenis Pemberitahuan*</label>
-        <select
-          id="jenisPemberitahuan"
-          name="jenisPemberitahuan"
-          value={dataPungutan.jenisPemberitahuan}
-          onChange={(e) => setDataPungutan({ ...dataPungutan, jenisPemberitahuan: e.target.value })}
-        >
-          <option value="PENGUSAHA">PENGUSAHA</option>
-        </select>
+            <div className="flex items-center justify-center">
+                <p> + </p>
+            </div>
 
-        <fieldset>
-          <legend>Pengusaha</legend>
+            <div className="flex flex-col">
+                <label className="text-sm font-semibold">Biaya Tambahan</label>
+                <input
+                type="text"
+                name="biayaTambahan"
+                value={formData.biayaTambahan}
+                onChange={handleChange}
+                className={`border p-2 rounded mt-2 ${formData.biayaTambahan ? 'bg-gray-200' : ''}`}
+                />
+            </div>
 
-          <label htmlFor="nib">NIB</label>
-          <input type="text" id="nib" name="nib" value={dataPungutan.nib} readOnly />
+            <div className="flex items-center justify-center">
+                <p> - </p>
+            </div>
 
-          <label htmlFor="namaPerusahaan">Nama Perusahaan*</label>
-          <input type="text" id="namaPerusahaan" name="namaPerusahaan" value={dataPungutan.namaPerusahaan} readOnly />
+            <div className="flex flex-col">
+                <label className="text-sm font-semibold">Biaya Pengurangan</label>
+                <input
+                type="text"
+                name="biayaPengurangan"
+                value={formData.biayaPengurangan}
+                onChange={handleChange}
+                className={`border p-2 rounded mt-2 ${formData.biayaPengurangan ? 'bg-gray-200' : ''}`}
+                />
+            </div>
 
-          <label htmlFor="noIdentitas">No Identitas*</label>
-          <input type="text" id="noIdentitas" name="noIdentitas" value={dataPungutan.noIdentitas} readOnly />
+            <div className="flex items-center justify-center">
+                <p> + </p>
+            </div>
 
-          <label htmlFor="provinsi">Provinsi*</label>
-          <input type="text" id="provinsi" name="provinsi" value={dataPungutan.provinsi} readOnly />
+            <div className="flex flex-col">
+                <label className="text-sm font-semibold">Voluntary Declaration</label>
+                <input
+                type="text"
+                name="voluntaryDeclaration"
+                value={formData.voluntaryDeclaration}
+                onChange={handleChange}
+                className={`border p-2 rounded mt-2 ${formData.voluntaryDeclaration ? 'bg-gray-200' : ''}`}
+                />
+            </div>
 
-          <label htmlFor="kotaKabupaten">Kota/Kabupaten*</label>
-          <input type="text" id="kotaKabupaten" name="kotaKabupaten" value={dataPungutan.kotaKabupaten} readOnly />
+            <div className="flex py-5 items-center justify-center">
+                <p> = </p>
+            </div>
 
-          <label htmlFor="kecamatan">Kecamatan*</label>
-          <input type="text" id="kecamatan" name="kecamatan" value={dataPungutan.kecamatan} readOnly />
+            <div className="flex flex-col">
+                <label className="text-sm font-semibold">Nilai FOB</label>
+                <input
+                type="text"
+                name="nilaiFOB"
+                value={formData.nilaiFOB}
+                onChange={handleChange}
+                className={`border p-2 rounded mt-2 ${formData.nilaiFOB ? 'bg-gray-200' : ''}`}
+                />
+            </div>
+        </div>
 
-          <label htmlFor="kodePos">Kode Pos*</label>
-          <input type="text" id="kodePos" name="kodePos" value={dataPungutan.kodePos} readOnly />
+        <div className="w-full flex gap-6 justify-between">
+          <div className="w-full flex flex-col">
+            <label className="text-sm font-semibold">Asuransi bayar di</label>
+            <select
+              name="incoterms"
+              value={formData.incoterms}
+              onChange={handleChange}
+              className="border p-2 rounded mt-2"
+            >
+              <option>Free on Board</option>
+            </select>
+          </div>
+          <div className="w-full flex flex-col">
+            <label className="text-sm font-semibold">Asuransi</label>
+            <input
+                type="text"
+                name="nilai"
+                value={formData.nilai}
+                onChange={handleChange}
+                className={`border p-2 rounded mt-2 ${formData.nilai ? 'bg-gray-200' : ''}`}
+            />
+          </div>
+          <div className="w-full flex flex-col">
+            <label className="text-sm font-semibold">Freight</label>
+            <input
+              type="text"
+              name="kurs"
+              value={formData.kurs}
+              onChange={handleChange}
+              className="border p-2 rounded mt-2"
+            />
+          </div>
+        </div>
 
-          <label htmlFor="telepon">Telepon*</label>
-          <input type="text" id="telepon" name="telepon" value={dataPungutan.telepon} readOnly />
+        <div className="w-full flex justify-between py-6">
+            <div className="flex flex-col">
+                <label className="text-sm font-semibold">CIF</label>
+                <input
+                type="text"
+                name="nilai"
+                value={formData.nilai}
+                onChange={handleChange}
+                className={`border p-2 rounded mt-2 ${formData.nilai ? 'bg-gray-200' : ''}`}
+                />
+            </div>
 
-          <label htmlFor="email">Email*</label>
-          <input type="email" id="email" name="email" value={dataPungutan.email} readOnly />
+            <div className="flex flex-col">
+                <label className="text-sm font-semibold">CIF Rp</label>
+                <input
+                type="text"
+                name="biayaTambahan"
+                value={formData.biayaTambahan}
+                onChange={handleChange}
+                className={`border p-2 rounded mt-2 ${formData.biayaTambahan ? 'bg-gray-200' : ''}`}
+                />
+            </div>
 
-          <label htmlFor="status">Status*</label>
-          <input type="text" id="status" name="status" value={dataPungutan.status} readOnly />
-        </fieldset>
+            <div className="flex flex-col">
+                <label className="text-sm font-semibold">Bruto</label>
+                <input
+                type="text"
+                name="biayaPengurangan"
+                value={formData.biayaPengurangan}
+                onChange={handleChange}
+                className={`border p-2 rounded mt-2 ${formData.biayaPengurangan ? 'bg-gray-200' : ''}`}
+                />
+            </div>
+
+            <div className="flex flex-col">
+                <label className="text-sm font-semibold">Netto</label>
+                <input
+                type="text"
+                name="voluntaryDeclaration"
+                value={formData.voluntaryDeclaration}
+                onChange={handleChange}
+                className={`border p-2 rounded mt-2 ${formData.voluntaryDeclaration ? 'bg-gray-200' : ''}`}
+                />
+            </div>
+            <div className="flex w-60 flex-col">
+                <label className="text-sm font-semibold">Flag Kontainer</label>
+                <select
+                    name="incoterms"
+                    value={formData.incoterms}
+                    onChange={handleChange}
+                    className="border p-2 rounded mt-2"
+                    >
+                    <option>Kontainer</option>
+                </select>
+            </div>
+        </div>
+
+        <div className="flex justify-center mt-6 gap-2">
+            <button type="button" className="bg-yellow-500 text-black font-medium px-4 py-2 rounded">Kelengkapan Data</button>
+            <button type="submit" className="bg-blue-950 text-white font-semibold px-4 py-2 rounded mr-4">Simpan</button>
+        </div>
       </form>
     </div>
   );

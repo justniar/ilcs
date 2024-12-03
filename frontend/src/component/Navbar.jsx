@@ -16,7 +16,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="flex items-center justify-between bg-blue-900 px-6 py-4 text-white shadow-md">
+    <nav className="flex items-center justify-between bg-blue-950 px-6 py-4 text-white shadow-md">
       <div className="flex items-center space-x-2">
         <span className="text-xl font-bold">INSW</span>
       </div>
