@@ -40,21 +40,26 @@ const DataEntitas = () => {
     <div className="p-6 mx-auto">
       <form onSubmit={handleSubmit}>
         <div className="w-full flex gap-6 justify-between">
-          <div className="w-full flex flex-col">
+          <div className="w-[350px] flex flex-col pb-5">
             <label className="text-sm font-semibold">Jenis Pemberitahuan</label>
             <select
               name="jenis_pemberitahuan"
               value={dataEntitas?.jenis_pemberitahuan || ''}
               onChange={handleChange}
               className="border p-2 rounded mt-2"
+              required
             >
-              <option>Free on Board</option>
+              <option>{dataEntitas?.jenis_pemberitahuan}</option>
             </select>
           </div>
-          <div className="border-b-2"></div>
         </div>
+        <div className="w-full border-b-2 border-gray"></div>
 
-        <h2>Pengusaha</h2>
+        <div>
+          <h2 className='py-3 font-bold text-lg'>Pengusaha</h2>
+          <div className='w-10 border-b-4 border-blue-500'></div>
+        </div>
+        
         <div className="w-full flex gap-6 justify-between py-6">
           <div className="w-full flex flex-col">
             <label className="text-sm font-semibold">Jenis Identitas</label>
@@ -63,6 +68,7 @@ const DataEntitas = () => {
               value={dataEntitas?.jenis_identitas || ''}
               onChange={handleChange}
               className="border p-2 rounded mt-2"
+              required
             >
               <option>Free on Board</option>
             </select>
@@ -78,6 +84,7 @@ const DataEntitas = () => {
               className={`border p-2 rounded mt-2 ${
                 dataEntitas?.nib ? 'bg-gray-200' : ''
               }`}
+              required
             />
           </div>
           <div className="w-full flex flex-col">
@@ -91,6 +98,7 @@ const DataEntitas = () => {
               className={`border p-2 rounded mt-2 ${
                 dataEntitas?.no_identitas ? 'bg-gray-200' : ''
               }`}
+              required
             />
           </div>
         </div>
@@ -116,6 +124,7 @@ const DataEntitas = () => {
               value={dataEntitas?.nama_perusahaan || ''}
               onChange={handleChange}
               className="border p-2 rounded mt-2"
+              required
             />
           </div>
         </div>
@@ -129,6 +138,7 @@ const DataEntitas = () => {
               value={dataEntitas?.prov || ''}
               onChange={handleChange}
               className="border p-2 rounded mt-2"
+              required
             />
           </div>
 
@@ -140,6 +150,7 @@ const DataEntitas = () => {
               value={dataEntitas?.kota || ''}
               onChange={handleChange}
               className="border p-2 rounded mt-2"
+              required
             />
           </div>
 
@@ -151,6 +162,7 @@ const DataEntitas = () => {
               value={dataEntitas?.kecamatan || ''}
               onChange={handleChange}
               className="border p-2 rounded mt-2"
+              required
             />
           </div>
 
@@ -162,6 +174,7 @@ const DataEntitas = () => {
               value={dataEntitas?.kode_pos || ''}
               onChange={handleChange}
               className="border p-2 rounded mt-2"
+              required
             />
           </div>
 
@@ -173,7 +186,46 @@ const DataEntitas = () => {
               value={dataEntitas?.rt || ''}
               onChange={handleChange}
               className="border p-2 rounded mt-2"
+              required
             />
+          </div>
+        </div>
+        <div className="w-full flex gap-6 justify-between py-6">
+          <div className="w-full flex flex-col">
+            <label className="text-sm font-semibold">Telephone</label>
+            <input
+              type="text"
+              name="Telephone"
+              value={dataEntitas?.telephone || ''}
+              onChange={handleChange}
+              className="border p-2 rounded mt-2"
+              required
+            />
+          </div>
+
+          <div className="w-full flex flex-col">
+            <label className="text-sm font-semibold">Email</label>
+            <input
+              type="email"
+              name="Email"
+              value={dataEntitas?.email || ''}
+              onChange={handleChange}
+              className="border p-2 rounded mt-2"
+              required
+            />
+          </div>
+
+          <div className="w-full flex flex-col">
+            <label className="text-sm font-semibold">Status</label>
+            <select
+              name="status"
+              value={dataEntitas?.status || ''}
+              onChange={handleChange}
+              className="border p-2 rounded mt-2"
+              required
+            >
+              <option>{dataEntitas?.status}</option>
+            </select>
           </div>
         </div>
 

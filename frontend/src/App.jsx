@@ -27,8 +27,9 @@ function App() {
         <NavBeranda />
         <div className="w-80vw m-8 p-10 bg-white">
           <IconPage />
-          <div className="text-blue-950 font-bold mb-4">
-            <p>Data Pemberitahuan</p>
+          <div className='py-6'>
+            <h2 className='py-3 font-bold text-lg'>Data Pemberitahuan</h2>
+            <div className='w-10 border-b-4 border-blue-500'></div>
           </div>
 
           <div className="flex justify-around items-center pb-2">

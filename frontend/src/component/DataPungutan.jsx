@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ChangeCircleIcon from '@mui/icons-material/ChangeCircle';
+import EmergencyIcon from '@mui/icons-material/Emergency';
+import { red } from '@mui/material/colors';
 
 const DataPungutan = () => {
   const [dataPungutan, setDataPungutan] = useState({
@@ -59,23 +61,25 @@ const DataPungutan = () => {
       <form onSubmit={handleSubmit}>
         <div className="w-full flex gap-6 justify-between">
           <div className="w-full flex flex-col">
-            <label className="text-sm font-semibold">Incoterms</label>
+            <label className="text-sm font-semibold">Incoterms <span className="text-red-500"><EmergencyIcon sx={{ color: 'red', fontSize: 5 }} /></span></label>
             <select
               name="incoterms"
               value={dataPungutan.incoterms}
               onChange={handleChange}
               className="border p-2 rounded mt-2"
+              required
             >
               <option>Free on Board</option>
             </select>
           </div>
           <div className="w-full flex flex-col">
-            <label className="text-sm font-semibold">Valuta</label>
+            <label className="text-sm font-semibold">Valuta <span className="text-red-500"><EmergencyIcon sx={{ color: 'red', fontSize: 5 }} /></span></label>
             <select
               name="valuta"
               value={dataPungutan.valuta}
               onChange={handleChange}
               className="border p-2 rounded mt-2"
+              required
             >
               <option>Euro</option>
             </select>
@@ -95,19 +99,20 @@ const DataPungutan = () => {
             </div>
         </div>
 
-        <div className="w-full flex gap-4 justify-between py-6">
+        <div className="w-full flex gap-1 justify-between py-6">
             <div className="flex flex-col">
-                <label className="text-sm font-semibold">Nilai</label>
+                <label className="text-sm font-semibold">Nilai <span className="text-red-500"><EmergencyIcon sx={{ color: 'red', fontSize: 5 }} /></span></label>
                 <input
                 type="text"
                 name="nilai"
                 value={dataPungutan.nilai}
                 onChange={handleChange}
                 className={`border p-2 rounded mt-2 ${dataPungutan.nilai ? 'bg-gray-200' : ''}`}
+                required
                 />
             </div>
 
-            <div className="flex items-center justify-center">
+            <div className="flex items-center pt-6 justify-center font-bold">
                 <p> + </p>
             </div>
 
@@ -122,7 +127,7 @@ const DataPungutan = () => {
                 />
             </div>
 
-            <div className="flex items-center justify-center">
+            <div className="flex items-center pt-6 justify-center font-bold">
                 <p> - </p>
             </div>
 
@@ -137,7 +142,7 @@ const DataPungutan = () => {
                 />
             </div>
 
-            <div className="flex items-center justify-center">
+            <div className="flex items-center pt-6 justify-center font-bold">
                 <p> + </p>
             </div>
 
@@ -152,7 +157,7 @@ const DataPungutan = () => {
                 />
             </div>
 
-            <div className="flex py-5 items-center justify-center">
+            <div className="flex items-center pt-6 justify-center font-bold">
                 <p> = </p>
             </div>
 
@@ -247,12 +252,13 @@ const DataPungutan = () => {
                 />
             </div>
             <div className="flex w-60 flex-col">
-                <label className="text-sm font-semibold">Flag Kontainer</label>
+                <label className="text-sm font-semibold">Flag Kontainer <span className="text-red-500 align-top"><EmergencyIcon sx={{ color: 'red', fontSize: 5 }} /></span></label>
                 <select
                     name="flag"
                     value={dataPungutan.flagKontainer}
                     onChange={handleChange}
                     className="border p-2 rounded mt-2"
+                    required
                     >
                     <option>Kontainer</option>
                 </select>

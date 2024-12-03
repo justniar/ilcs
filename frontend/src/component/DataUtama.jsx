@@ -35,7 +35,6 @@ const DataUtama = () => {
       
     return (
         <div>
-            <h2>Data Utama</h2>
             <div className="p-6 mx-auto">
                 <form onChange={handleChange}>
                     <div className="w-full flex gap-6 py-2 justify-between">
@@ -91,6 +90,7 @@ const DataUtama = () => {
                             value={dataUtama.ur_pabean_asal}
                             onChange={handleChange}
                             className="border p-2 rounded mt-2"
+                            required
                             >
                             <option>{dataUtama.ur_pabean_asal}</option>
                             </select>
@@ -113,6 +113,7 @@ const DataUtama = () => {
                             value={dataUtama.ur_jenis_pib}
                             onChange={handleChange}
                             className="border p-2 rounded mt-2"
+                            required
                             >
                             <option>{dataUtama.ur_jenis_pib}</option>
                             </select>
@@ -127,6 +128,7 @@ const DataUtama = () => {
                                 value={dataUtama.ur_jenis_impor}
                                 onChange={handleChange}
                                 className="border p-2 rounded mt-2"
+                                required
                                 >
                                 <option>{dataUtama.ur_jenis_impor}</option>
                                 </select>
@@ -138,6 +140,7 @@ const DataUtama = () => {
                                 value={dataUtama.ur_cara_bayar}
                                 onChange={handleChange}
                                 className="border p-2 rounded mt-2"
+                                required
                                 >
                                 <option>{dataUtama.ur_cara_bayar}</option>
                                 </select>
@@ -149,6 +152,7 @@ const DataUtama = () => {
                                 value={dataUtama.ur_transaksi_impor}
                                 onChange={handleChange}
                                 className="border p-2 rounded mt-2"
+                                required
                                 >
                                 <option>{dataUtama.ur_transaksi_impor}</option>
                                 </select>
