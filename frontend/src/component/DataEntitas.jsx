@@ -8,7 +8,7 @@ const DataEntitas = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          'http://10.8.3.199:1880/test/v2/dataEntitas?id_aju=04eb6a72-bb63-5aed-5e92-f58a3bfd5da2'
+          'https://api-hub.ilcs.co.id/test/v2/dataEntitas?id_aju=04eb6a72-bb63-5aed-5e92-f58a3bfd5da2'
         );
 
         if (response.data.status) {

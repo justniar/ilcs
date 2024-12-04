@@ -2,35 +2,51 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 
 const DataUtama = () => {
-    const [dataUtama, setDataUtama] = useState(null);
+    const [dataUtama, setDataUtama] = useState({
+        nomor_pengajuan: "",
+        tanggal_pengajuan: "",
+        nomor_pendaftaran: "",
+        tanggal_pendaftaran: "",
+        ur_pabean_asal: "",
+        kd_skep_fasilitas: "",
+        ur_jenis_pib: "",
+        ur_jenis_impor: "",
+        ur_cara_bayar: "",
+        ur_transaksi_impor: ""
+      });
+    const [nomorPengajuan, setNomorPengajuan] = useState("");
 
-    useEffect(()=>{
+    useEffect(() => {
         const fetchData = async () => {
-            try{
-                const response = await axios.get("https://api-hub.ilcs.co.id/test/v2/dataUtama?nomor_pengajuan=20120B388FAE20240402000001");
-                
-                if(response.data.status){
-                    setDataUtama(response.data.data)
-                } else {
-                    console.error("failed to fetch data: ", response.data.message)
-                }
-            } catch (err) {
-                console.error("error fetching data: ", err);
+          if (!nomorPengajuan) return;
+          try {
+            const response = await axios.get(
+              `https://api-hub.ilcs.co.id/test/v2/dataUtama?nomor_pengajuan=${nomorPengajuan}`
+            );
+    
+            if (response.data.status) {
+              setDataUtama(response.data.data);
+            } else {
+              console.error("Failed to fetch data: ", response.data.message);
             }
+          } catch (err) {
+            console.error("Error fetching data: ", err);
+          }
         };
+    
         fetchData();
-    }, [])
-
-    if (!dataUtama){
-        return <p>Loading data ...</p>
-    }
-
-    const handleChange = (e) => {
+      }, [nomorPengajuan]); 
+    
+      const handleChange = (e) => {
         const { name, value } = e.target;
-        setDataUtama(prevData => ({
+        setDataUtama((prevData) => ({
           ...prevData,
           [name]: value
         }));
+      };
+    
+      const handleNomorPengajuanChange = (e) => {
+        setNomorPengajuan(e.target.value);
       };
       
     return (
@@ -44,7 +60,7 @@ const DataUtama = () => {
                             type="text"
                             name="freight"
                             value={dataUtama.nomor_pengajuan}
-                            onChange={handleChange}
+                            onChange={handleNomorPengajuanChange}
                             className={`border p-2 rounded mt-2 ${dataUtama.jenis_kegiatan ? 'bg-gray-200' : ''}`}
                             />
                         </div>
@@ -148,12 +164,12 @@ const DataUtama = () => {
                             <div className="w-full flex flex-col">
                                 <label className="text-sm font-semibold">Transaksi</label>
                                 <select
-                                name="incoterms"
-                                value={dataUtama.ur_transaksi_impor}
-                                onChange={handleChange}
-                                className="border p-2 rounded mt-2"
-                                required
-                                >
+                                    name="incoterms"
+                                    value={dataUtama.ur_transaksi_impor}
+                                    onChange={handleChange}
+                                    className="border p-2 rounded mt-2"
+                                    required
+                                    >
                                 <option>{dataUtama.ur_transaksi_impor}</option>
                                 </select>
                             </div>
