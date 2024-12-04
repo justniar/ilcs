@@ -19,7 +19,7 @@ function App() {
   };
 
   const stepTitles = ['Data Utama', 'Data Entitas', 'Data Pungutan'];
-  const activePage = 'Pemberitahuan'; // Set the current active page
+  const activePage = 'Pemberitahuan';
 
   return (
     <>
