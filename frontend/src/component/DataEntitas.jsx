@@ -41,7 +41,7 @@ const DataEntitas = () => {
       <form onSubmit={handleSubmit}>
         <div className="w-full flex gap-6 justify-between">
           <div className="w-[350px] flex flex-col pb-5">
-            <label className="text-sm font-semibold">Jenis Pemberitahuan</label>
+            <label className="text-sm font-semibold">Jenis Pemberitahuan <span className="text-red-500">*</span></label>
             <select
               name="jenis_pemberitahuan"
               value={dataEntitas?.jenis_pemberitahuan || ''}
@@ -56,13 +56,13 @@ const DataEntitas = () => {
         <div className="w-full border-b-2 border-gray"></div>
 
         <div>
-          <h2 className='py-3 font-bold text-lg'>Pengusaha</h2>
+          <h2 className='py-3 font-bold text-lg'>Pengusaha <span className="text-red-500">*</span></h2>
           <div className='w-10 border-b-4 border-blue-500'></div>
         </div>
         
         <div className="w-full flex gap-6 justify-between py-6">
           <div className="w-full flex flex-col">
-            <label className="text-sm font-semibold">Jenis Identitas</label>
+            <label className="text-sm font-semibold">Jenis Identitas <span className="text-red-500">*</span></label>
             <select
               name="jenis_identitas"
               value={dataEntitas?.jenis_identitas || ''}
@@ -74,7 +74,7 @@ const DataEntitas = () => {
             </select>
           </div>
           <div className="w-full flex flex-col">
-            <label className="text-sm font-semibold">NIB</label>
+            <label className="text-sm font-semibold">NIB <span className="text-red-500">*</span></label>
             <input
               type="text"
               name="nib"
@@ -88,7 +88,7 @@ const DataEntitas = () => {
             />
           </div>
           <div className="w-full flex flex-col">
-            <label className="text-sm font-semibold">Nomor Identitas</label>
+            <label className="text-sm font-semibold">Nomor Identitas <span className="text-red-500">*</span></label>
             <input
               type="text"
               name="no_identitas"
@@ -117,7 +117,7 @@ const DataEntitas = () => {
             />
           </div>
           <div className="col-span-2 flex flex-col">
-            <label className="text-sm font-semibold">Nama Perusahaan</label>
+            <label className="text-sm font-semibold">Nama Perusahaan <span className="text-red-500">*</span></label>
             <input
               type="text"
               name="nama_perusahaan"
@@ -131,7 +131,7 @@ const DataEntitas = () => {
 
         <div className="w-full flex justify-between py-6">
           <div className="flex flex-col">
-            <label className="text-sm font-semibold">Provinsi</label>
+            <label className="text-sm font-semibold">Provinsi <span className="text-red-500">*</span></label>
             <input
               type="text"
               name="prov"
@@ -143,7 +143,7 @@ const DataEntitas = () => {
           </div>
 
           <div className="flex flex-col">
-            <label className="text-sm font-semibold">Kota/Kabupaten</label>
+            <label className="text-sm font-semibold">Kota/Kabupaten <span className="text-red-500">*</span></label>
             <input
               type="text"
               name="kota"
@@ -155,7 +155,7 @@ const DataEntitas = () => {
           </div>
 
           <div className="flex flex-col">
-            <label className="text-sm font-semibold">Kecamatan</label>
+            <label className="text-sm font-semibold">Kecamatan <span className="text-red-500">*</span></label>
             <input
               type="text"
               name="kecamatan"
@@ -167,7 +167,7 @@ const DataEntitas = () => {
           </div>
 
           <div className="flex flex-col">
-            <label className="text-sm font-semibold">Kode Pos</label>
+            <label className="text-sm font-semibold">Kode Pos <span className="text-red-500">*</span></label>
             <input
               type="text"
               name="kode_pos"
@@ -179,7 +179,7 @@ const DataEntitas = () => {
           </div>
 
           <div className="flex w-60 flex-col">
-            <label className="text-sm font-semibold">RT/RW</label>
+            <label className="text-sm font-semibold">RT/RW <span className="text-red-500">*</span></label>
             <input
               type="text"
               name="rt"
@@ -190,9 +190,9 @@ const DataEntitas = () => {
             />
           </div>
         </div>
-        <div className="w-full flex gap-6 justify-between py-6">
+        <div className="w-full flex gap-6 justify-between py-3">
           <div className="w-full flex flex-col">
-            <label className="text-sm font-semibold">Telephone</label>
+            <label className="text-sm font-semibold">Telephone <span className="text-red-500">*</span></label>
             <input
               type="text"
               name="Telephone"
@@ -204,7 +204,7 @@ const DataEntitas = () => {
           </div>
 
           <div className="w-full flex flex-col">
-            <label className="text-sm font-semibold">Email</label>
+            <label className="text-sm font-semibold">Email <span className="text-red-500">*</span></label>
             <input
               type="email"
               name="Email"
@@ -216,7 +216,7 @@ const DataEntitas = () => {
           </div>
 
           <div className="w-full flex flex-col">
-            <label className="text-sm font-semibold">Status</label>
+            <label className="text-sm font-semibold">Status <span className="text-red-500">*</span></label>
             <select
               name="status"
               value={dataEntitas?.status || ''}
