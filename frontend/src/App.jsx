@@ -19,6 +19,7 @@ function App() {
   };
 
   const stepTitles = ['Data Utama', 'Data Entitas', 'Data Pungutan'];
+  const activePage = 'Pemberitahuan'; // Set the current active page
 
   return (
     <>
@@ -26,10 +27,10 @@ function App() {
         <Navbar />
         <NavBeranda />
         <div className="w-80vw m-8 p-10 bg-white">
-          <IconPage />
-          <div className='py-6'>
-            <h2 className='py-3 font-bold text-lg'>Data Pemberitahuan</h2>
-            <div className='w-10 border-b-4 border-blue-500'></div>
+          <IconPage activePage={activePage} />
+          <div className="py-6">
+            <h2 className="py-3 font-bold text-lg">Data Pemberitahuan</h2>
+            <div className="w-10 border-b-4 border-blue-500"></div>
           </div>
 
           <div className="flex justify-around items-center pb-2">
@@ -40,15 +41,14 @@ function App() {
                   currentStep === index + 1
                     ? 'text-blue-950'
                     : 'text-gray-400'
-                }
-                `}
+                }`}
               >
                 {title}
               </div>
             ))}
           </div>
 
-          <div className='border border-gray-200 pt-6 rounded-md p-10'>
+          <div className="border border-gray-200 pt-6 rounded-md p-10">
             {currentStep === 1 && <DataUtama />}
             {currentStep === 2 && <DataEntitas />}
             {currentStep === 3 && <DataPungutan />}

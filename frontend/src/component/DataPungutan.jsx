@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ChangeCircleIcon from '@mui/icons-material/ChangeCircle';
-import EmergencyIcon from '@mui/icons-material/Emergency';
-import { red } from '@mui/material/colors';
 
 const DataPungutan = () => {
   const [dataPungutan, setDataPungutan] = useState({
@@ -61,7 +59,7 @@ const DataPungutan = () => {
       <form onSubmit={handleSubmit}>
         <div className="w-full flex gap-6 justify-between">
           <div className="w-full flex flex-col">
-            <label className="text-sm font-semibold">Incoterms <span className="text-red-500"><EmergencyIcon sx={{ color: 'red', fontSize: 5 }} /></span></label>
+            <label className="text-sm font-semibold">Incoterms <span className="text-red-500">*</span></label>
             <select
               name="incoterms"
               value={dataPungutan.incoterms}
@@ -73,7 +71,7 @@ const DataPungutan = () => {
             </select>
           </div>
           <div className="w-full flex flex-col">
-            <label className="text-sm font-semibold">Valuta <span className="text-red-500"><EmergencyIcon sx={{ color: 'red', fontSize: 5 }} /></span></label>
+            <label className="text-sm font-semibold">Valuta <span className="text-red-500">*</span></label>
             <select
               name="valuta"
               value={dataPungutan.valuta}
@@ -101,7 +99,7 @@ const DataPungutan = () => {
 
         <div className="w-full flex gap-1 justify-between py-6">
             <div className="flex flex-col">
-                <label className="text-sm font-semibold">Nilai <span className="text-red-500"><EmergencyIcon sx={{ color: 'red', fontSize: 5 }} /></span></label>
+                <label className="text-sm font-semibold">Nilai <span className="text-red-500">*</span></label>
                 <input
                 type="text"
                 name="nilai"
@@ -252,7 +250,7 @@ const DataPungutan = () => {
                 />
             </div>
             <div className="flex w-60 flex-col">
-                <label className="text-sm font-semibold">Flag Kontainer <span className="text-red-500 align-top"><EmergencyIcon sx={{ color: 'red', fontSize: 5 }} /></span></label>
+                <label className="text-sm font-semibold">Flag Kontainer <span className="text-red-500 align-top">*</span></label>
                 <select
                     name="flag"
                     value={dataPungutan.flagKontainer}
